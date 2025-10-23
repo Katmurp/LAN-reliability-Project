@@ -1,10 +1,3 @@
-%% Function runSingleLinkSim() % Parameters 
-%  K - the number of packets in the application message 
-%  p - the probability of failure  
-%  N - the number of simulations to run 
-% 
-% Returns: the average numeric result across the total simulations 
- 
 function result = runCompoundNetworkSim(K, p, N)
     simResults = ones(1, N);
 
@@ -16,7 +9,7 @@ function result = runCompoundNetworkSim(K, p, N)
         while pktSuccessCount < K
             success = false;
 
-            % Keep trying this packet until it succeeds
+            % Keep trying until it succeeds
             while ~success
                 txAttemptCount = txAttemptCount + 1;
 
@@ -30,7 +23,7 @@ function result = runCompoundNetworkSim(K, p, N)
                 bottomLink2 = rand > p;
                 bottomSuccess = bottomLink1 && bottomLink2;
 
-                % Packet succeeds if at least one branch works
+                % succeeds if at least one works
                 if topSuccess || bottomSuccess
                     success = true;
                 end
@@ -43,4 +36,5 @@ function result = runCompoundNetworkSim(K, p, N)
     end
 
     result = mean(simResults);
+
 end
