@@ -1,10 +1,3 @@
-%% Function runSingleLinkSim() % Parameters 
-%  K - the number of packets in the application message 
-%  p - the probability of failure  
-%  N - the number of simulations to run 
-% 
-% Returns: the average numeric result across the total simulations 
- 
 function result = runSingleLinkSim(K,p,N) 
  
     simResults = ones(1,N); % a place to store the result of each simulation 
@@ -14,17 +7,18 @@ function result = runSingleLinkSim(K,p,N)
          
             while pktSuccessCount < K 
                  
-                r = rand; % gen random num to determine if packet is successful (r > p)             
-                txAttemptCount = txAttemptCount + 1; % count 1st attempt 
+                r = rand;             
+                txAttemptCount = txAttemptCount + 1; 
              
                 % while packet transmissions is not successful (r < p)             
                 while r < p 
                     r = rand; % transmit again, generate new success check value r                 
                     txAttemptCount = txAttemptCount + 1; % count additional attempt             
                 end          
-                pktSuccessCount = pktSuccessCount + 1; % increase success count   after success (r > p) 
+                pktSuccessCount = pktSuccessCount + 1; 
             end      
-            simResults(i) = txAttemptCount; % record total number of attempted     transmissions before entire application        msg (K successful packets) transmitted 
+            simResults(i) = txAttemptCount; 
         end  
     result = mean(simResults);
+
 end
