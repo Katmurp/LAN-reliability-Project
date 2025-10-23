@@ -1,13 +1,10 @@
-%% Simulate Single Link Network
-% Task 1 - Compare simulated vs. calculated average transmissions
-
 clear; clc; close all;
 
 K_values = [1, 5, 10];
 N = 1000;
 p_range = 0.01:0.05:0.99;
 
-% Define each figure's static probabilities (p1, p2, p3)
+% Define probabilities (p1, p2, p3)
 cases = {
     [0.10, 0.60, NaN],  % Figure 1
     [0.60, 0.10, NaN],  % Figure 2
@@ -45,4 +42,5 @@ for c = 1:length(cases)
     title(sprintf('Compound Network - Figure %d', c));
     legend(arrayfun(@(K) sprintf('K = %d', K), K_values, 'UniformOutput', false), 'Location', 'northwest');
     grid on;
+
 end
