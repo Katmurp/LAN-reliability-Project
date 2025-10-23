@@ -1,12 +1,11 @@
 %% Simulate Single Link Network
-% Task 1 - Compare simulated vs. calculated average transmissions
 
 clear; clc; close all;
 
 K_values = [1, 5, 15, 50, 100];
 N = 1000;                        % number of simulations
 p_values = 0:0.05:0.9;           % range of failure probabilities
-colors = lines(length(K_values)); % distinct colors for plotting
+colors = lines(length(K_values));
 
 simResults = zeros(length(K_values), length(p_values));
 calcResults = zeros(length(K_values), length(p_values));
@@ -50,4 +49,5 @@ xlabel('Packet Failure Probability (p)');
 ylabel('Average Number of Transmissions');
 title('Compound Network - All K Values');
 legend(arrayfun(@(K) sprintf('K = %d', K), K_values, 'UniformOutput', false), 'Location', 'northwest');
+
 grid on;
